@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-$(0u!qfv@_psv*@&7!32n_m9pmo^09w%qkuddh3j=ifn-x&3xh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-educationacademy-app.up.railway.app', 'localhost', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGIN = ['https://django-educationacademy-app.up.railway.app']
 
 # Application definition
 
