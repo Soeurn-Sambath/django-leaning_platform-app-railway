@@ -1,69 +1,9 @@
 {% load static %}
 <header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-stone-200/70 shadow-sm transition-all duration-300">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="h-20 flex items-center justify-between gap-4 lg:gap-8">
-      <!-- 1. Brand / Logo -->
-      <a href="{% url 'home' %}" class="flex items-center gap-3 group shrink-0">
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 flex items-center justify-center text-white shadow-lg shadow-blue-900/20 group-hover:scale-105 group-hover:-rotate-3 transition-all duration-300">
-          <i class="fa-solid fa-graduation-cap text-xl"></i>
-        </div>
-        <div class="flex flex-col justify-center">
-          <span class="text-xl tracking-tight text-stone-900 leading-none font-black">
-            Education<span class="text-blue-600">Academy</span>
-          </span>
-          <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-400 mt-1">
-            Learning Platform
-          </span>
-        </div>
-      </a>
-
-      <!-- 2. Desktop Navigation Menu -->
-      <ul class="hidden md:flex flex-1 items-center justify-center gap-1 lg:gap-4 px-2 whitespace-nowrap">
-        <li>
-          <a
-            href="{% url 'home' %}"
-            class="group flex items-center gap-2 px-3.5 py-2 text-[15px] font-bold rounded-lg transition-all {% if request.resolver_match.url_name == 'home' %}text-blue-700 bg-blue-50{% else %}text-stone-600 hover:text-blue-700 hover:bg-stone-50{% endif %}"
-          >
-            <i class="fa-solid fa-house-chimney group-hover:-translate-y-0.5 transition-transform {% if request.resolver_match.url_name == 'home' %}text-blue-600{% else %}text-stone-400 group-hover:text-blue-600{% endif %}"></i>
-            ទំព័រដើម
-          </a>
-        </li>
-
-        <li>
-          <a
-            href="{% url 'courses_list' %}"
-            class="group flex items-center gap-2 px-3.5 py-2 text-[15px] font-bold rounded-lg transition-all {% if request.resolver_match.url_name == 'courses_list' or request.resolver_match.url_name == 'course_detail' %}text-blue-700 bg-blue-50{% else %}text-stone-600 hover:text-blue-700 hover:bg-stone-50{% endif %}"
-          >
-            <i class="fa-solid fa-book-open group-hover:-translate-y-0.5 transition-transform {% if request.resolver_match.url_name == 'courses_list' or request.resolver_match.url_name == 'course_detail' %}text-blue-600{% else %}text-stone-400 group-hover:text-blue-600{% endif %}"></i>
-            វគ្គសិក្សា
-          </a>
-        </li>
-
-        <li>
-          <a
-            href="{% url 'about' %}"
-            class="group flex items-center gap-2 px-3.5 py-2 text-[15px] font-bold rounded-lg transition-all {% if request.resolver_match.url_name == 'about' %}text-blue-700 bg-blue-50{% else %}text-stone-600 hover:text-blue-700 hover:bg-stone-50{% endif %}"
-          >
-            <i class="fa-solid fa-circle-info group-hover:-translate-y-0.5 transition-transform {% if request.resolver_match.url_name == 'about' %}text-blue-600{% else %}text-stone-400 group-hover:text-blue-600{% endif %}"></i>
-            អំពីយើង
-          </a>
-        </li>
-
-        <li>
-          <a
-            href="{% url 'contact' %}"
-            class="group flex items-center gap-2 px-3.5 py-2 text-[15px] font-bold rounded-lg transition-all {% if request.resolver_match.url_name == 'contact' %}text-blue-700 bg-blue-50{% else %}text-stone-600 hover:text-blue-700 hover:bg-stone-50{% endif %}"
-          >
-            <i class="fa-solid fa-envelope group-hover:-translate-y-0.5 transition-transform {% if request.resolver_match.url_name == 'contact' %}text-blue-600{% else %}text-stone-400 group-hover:text-blue-600{% endif %}"></i>
-            ទំនាក់ទំនង
-          </a>
-        </li>
-      </ul>
-
-      <!-- 3. Search and Action Area -->
-      <div class="flex items-center gap-3 shrink-0">
+  <!-- 3. Search and Action Area -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
         <!-- Search form -->
-        <form action="{% url 'courses_list' %}" method="GET" class="hidden sm:flex relative w-48 lg:w-64 group">
+        <form action="{% url 'courses_list' %}" method="GET" class="hidden md:flex relative w-48 lg:w-64 group">
           <input
             type="text"
             name="q"
@@ -76,50 +16,47 @@
           </button>
         </form>
 
-        <div class="w-px h-8 bg-stone-200 hidden sm:block mx-1"></div>
+        <div class="w-px h-8 bg-stone-200 hidden md:block mx-1"></div>
      
         {% if user.is_authenticated %}
           <!-- Student Badge / Profile -->
-          <a href="{% url 'profile' %}" class="flex items-center gap-2.5 p-1 pr-3.5 rounded-full bg-white border border-stone-200 hover:border-blue-300 hover:shadow-md transition-all group">
+          <a href="{% url 'profile' %}" class="flex items-center gap-2 p-1 lg:pr-3.5 rounded-full bg-white border border-stone-200 hover:border-blue-300 hover:shadow-md transition-all group">
             <div class="w-9 h-9 rounded-full bg-blue-50 border border-blue-200 overflow-hidden shadow-sm group-hover:scale-105 transition-transform flex items-center justify-center">
-              
               {% if profile.avatar %}
-                <img
-                src="{{ profile.avatar.url }}"
-                alt=""
-                class="w-full h-full object-cover object-top"
-              />
+                <img src="{{ profile.avatar.url }}" alt="" class="w-full h-full object-cover object-top" />
               {% else %}
                 <i class="fa-solid fa-user text-gray-700"></i>
               {% endif %}
             </div>
-            <div class="flex flex-col text-left hidden lg:flex">
+            <div class="hidden lg:flex flex-col text-left">
               <span class="text-xs font-black text-stone-800 leading-none">{{ user.username }}</span>
               <span class="text-[10px] font-bold text-blue-600 mt-0.5">Admin / Student</span>
             </div>
           </a>    
-          <form method="POST" action="{% url 'login' %}">
+
+          <!-- លាក់ប៊ូតុង Logout លើ Mobile ហើយដាក់ក្នុង Mobile Menu វិញ -->
+          <form method="POST" action="{% url 'logout' %}" class="hidden sm:block">
             {% csrf_token %}
-            <button type="submit"
-              class="bg-red-500 text-white px-4 py-2 rounded-lg">
+            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors">
               Logout
             </button>
           </form>
         {% else %}
-          <a href="{% url 'login' %}">
-            Login
-          </a>
-          <a href="{% url 'register' %}"
-            class="bg-blue-600 text-white px-4 py-2 rounded-lg">
-            Register
-          </a>
+          <div class="hidden sm:flex items-center gap-3">
+            <a href="{% url 'login' %}" class="text-sm font-bold text-stone-600 hover:text-blue-600">
+              Login
+            </a>
+            <a href="{% url 'register' %}" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors">
+              Register
+            </a>
+          </div>
         {% endif %}
 
-        <!-- Mobile Menu Toggle Button -->
+        <!-- Mobile Menu Toggle Button (ប្តូរពី sm:hidden ទៅ md:hidden) -->
         <button
           type="button"
           id="mobileMenuToggle"
-          class="sm:hidden p-2 text-stone-600 hover:text-blue-600 hover:bg-stone-100 rounded-lg transition-colors"
+          class="md:hidden p-2 text-stone-600 hover:text-blue-600 hover:bg-stone-100 rounded-lg transition-colors"
           aria-label="Toggle Navigation"
         >
           <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
@@ -127,8 +64,8 @@
       </div>
     </div>
 
-    <!-- Mobile Navigation Drawer -->
-    <div id="mobileMenu" class="hidden sm:hidden pb-4 pt-2 border-t border-stone-100 animate-fadeIn">
+    <!-- Mobile Navigation Drawer (ប្តូរពី sm:hidden ទៅ md:hidden) -->
+    <div id="mobileMenu" class="hidden md:hidden pb-4 pt-2 border-t border-stone-100 animate-fadeIn">
       <form action="{% url 'courses_list' %}" method="GET" class="relative mb-3">
         <input
           type="text"
@@ -156,8 +93,26 @@
           <i class="fa-solid fa-envelope w-5"></i> ទំនាក់ទំនង
         </a>
       </div>
+
+      <!-- ប៊ូតុង Auth សម្រាប់ Mobile -->
+      <div class="sm:hidden mt-3 pt-3 border-t border-stone-100 flex flex-col gap-2">
+        {% if user.is_authenticated %}
+          <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="w-full bg-red-500 text-white text-sm font-bold py-2.5 rounded-lg">
+              Logout
+            </button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}" class="w-full text-center border border-stone-200 text-stone-700 text-sm font-bold py-2.5 rounded-lg">
+            Login
+          </a>
+          <a href="{% url 'register' %}" class="w-full text-center bg-blue-600 text-white text-sm font-bold py-2.5 rounded-lg">
+            Register
+          </a>
+        {% endif %}
+      </div>
     </div>
-  </nav>
 </header>
 
 <script>
