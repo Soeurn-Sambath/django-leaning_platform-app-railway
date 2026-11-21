@@ -1,0 +1,135 @@
+{% load static %}
+<div class="relative w-full max-w-7xl mx-auto my-6">
+  <!-- Left Navigation Arrow -->
+  <button
+    type="button"
+    id="prevBtn"
+    aria-label="Scroll left"
+    class="absolute left-0 lg:-left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-md text-gray-700 hover:text-blue-600 hover:border-blue-300 transition-all cursor-pointer"
+  >
+    <i class="fa-solid fa-chevron-left text-sm"></i>
+  </button>
+
+  <!-- Right Navigation Arrow -->
+  <button
+    type="button"
+    id="nextBtn"
+    aria-label="Scroll right"
+    class="absolute right-0 lg:-right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-md text-gray-700 hover:text-blue-600 hover:border-blue-300 transition-all cursor-pointer"
+  >
+    <i class="fa-solid fa-chevron-right text-sm"></i>
+  </button>
+
+  <!-- Carousel Container with Smooth Scroll -->
+  <div
+    id="carousel"
+    class="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth px-2 lg:px-4 py-4"
+  >
+    {% for course in courses|slice:":5" %}
+    <div
+      class="snap-start shrink-0 w-[300px] sm:w-[320px] bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group"
+    >
+      <!-- Course Image Header -->
+      <a
+        href="{% url 'course_detail' course.id %}"
+        class="block relative h-44 bg-gradient-to-br from-blue-900 to-indigo-700 overflow-hidden"
+      >
+        {% if course.image %}
+        <img
+          src="{{ course.image.url }}"
+          alt="{{ course.title }}"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        {% else %}
+        <div
+          class="w-full h-full flex flex-col items-center justify-center text-white/90 p-4 text-center"
+        >
+          <i class="fa-solid fa-laptop-code text-4xl mb-2 text-blue-200"></i>
+          <span class="text-xs font-bold"
+            >{{ course.get_category_display }}</span
+          >
+        </div>
+        {% endif %}
+        <span
+          class="absolute top-3 right-3 bg-green-500 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow"
+        >
+          ${{ course.price }}
+        </span>
+      </a>
+
+      <!-- Card Details -->
+      <div class="p-5 flex-1 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span
+              class="bg-blue-50 text-blue-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full"
+            >
+              {{ course.get_category_display }}
+            </span>
+            <div
+              class="flex items-center gap-1 text-amber-500 text-xs font-bold"
+            >
+              <i class="fa-solid fa-star"></i>
+              <span>{{ course.rating }}</span>
+            </div>
+          </div>
+
+          <a href="{% url 'course_detail' course.id %}">
+            <h3
+              class="text-base font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-1"
+            >
+              {{ course.title }}
+            </h3>
+          </a>
+
+          <p class="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+            {{ course.description }}
+          </p>
+        </div>
+
+        <div
+          class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between gap-3"
+        >
+          <div
+            class="flex items-center gap-1.5 text-xs text-gray-500 font-medium"
+          >
+            <i class="fa-regular fa-clock text-blue-500"></i>
+            <span>{{ course.total_duration }} h</span>
+          </div>
+
+          <a
+            href="{% url 'course_detail' course.id %}"
+            class="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3.5 py-2 rounded-lg transition-colors shadow-sm"
+          >
+            <span>លម្អិត</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+      
+    {% empty %}
+    <div class="w-full text-center py-8 text-gray-500">
+      មិនមានវគ្គសិក្សាពិសេសនៅឡើយទេ
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  (function () {
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    if (carousel && prevBtn && nextBtn) {
+      const scrollAmount = 340;
+      nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+      prevBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+    }
+  })();
+</script>

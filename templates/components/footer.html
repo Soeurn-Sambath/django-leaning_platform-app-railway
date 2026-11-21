@@ -1,0 +1,120 @@
+{% load static %}
+<footer class="bg-white border-t border-gray-200 mt-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+      <!-- Brand & Mission -->
+      <div class="lg:col-span-4">
+        <a href="{% url 'home' %}" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-700 to-blue-500 flex items-center justify-center text-white shadow-md">
+            <i class="fa-solid fa-graduation-cap text-lg"></i>
+          </div>
+          <span class="text-xl tracking-tight text-stone-900 font-black">
+            Education<span class="text-blue-600">Academy</span>
+          </span>
+        </a>
+        <p class="mt-4 text-sm text-gray-600 leading-relaxed max-w-sm">
+          EducationAcademy គឺជាវេទិកាសិក្សាអនឡាញឈានមុខគេ ដែលផ្តល់ជូនវគ្គបណ្តុះបណ្តាលបច្ចេកវិទ្យា និងជំនាញសរសេរកូដជាក់ស្តែង ចាប់ពីមូលដ្ឋានគ្រឹះរហូតដល់កម្រិតអាជីព។
+        </p>
+        <div class="mt-6 flex items-center gap-3 text-gray-500">
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-blue-50 hover:text-blue-600 flex items-center justify-center transition-colors">
+            <i class="fa-brands fa-facebook-f text-sm"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-blue-50 hover:text-blue-600 flex items-center justify-center transition-colors">
+            <i class="fa-brands fa-telegram text-sm"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-blue-50 hover:text-blue-600 flex items-center justify-center transition-colors">
+            <i class="fa-brands fa-youtube text-sm"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-blue-50 hover:text-blue-600 flex items-center justify-center transition-colors">
+            <i class="fa-brands fa-github text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links Navigation -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:col-span-8">
+        <!-- Categories -->
+        <div>
+          <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wider">
+            វគ្គសិក្សាពេញនិយម
+          </h3>
+          <ul class="mt-4 space-y-2.5 text-sm text-gray-600">
+            <li>
+              <a href="{% url 'courses_list' %}?category=frontend" class="hover:text-blue-600 transition-colors">
+                Front-End Development
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'courses_list' %}?category=backend" class="hover:text-blue-600 transition-colors">
+                Back-End Development
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'courses_list' %}?category=graphic-design" class="hover:text-blue-600 transition-colors">
+                Graphic Design
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'courses_list' %}?category=ux-ui" class="hover:text-blue-600 transition-colors">
+                UI/UX Design
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'courses_list' %}?category=mobile" class="hover:text-blue-600 transition-colors">
+                Mobile App Development
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pages -->
+        <div>
+          <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wider">
+            ទំព័រចម្បង
+          </h3>
+          <ul class="mt-4 space-y-2.5 text-sm text-gray-600">
+            <li>
+              <a href="{% url 'home' %}" class="hover:text-blue-600 transition-colors">ទំព័រដើម</a>
+            </li>
+            <li>
+              <a href="{% url 'courses_list' %}" class="hover:text-blue-600 transition-colors">វគ្គសិក្សាទាំងអស់</a>
+            </li>
+            <li>
+              <a href="{% url 'about' %}" class="hover:text-blue-600 transition-colors">អំពីយើង</a>
+            </li>
+            <li>
+              <a href="{% url 'contact' %}" class="hover:text-blue-600 transition-colors">ទំនាក់ទំនង</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-span-2 sm:col-span-1">
+          <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wider">
+            ទំនាក់ទំនង
+          </h3>
+          <ul class="mt-4 space-y-3 text-sm text-gray-600">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-phone text-blue-600 mt-1"></i>
+              <span>+855 81 589 230</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-envelope text-blue-600 mt-1"></i>
+              <span>eduacademy@gamil.com</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-location-dot text-blue-600 mt-1"></i>
+              <span>ខេត្តបាត់ដំបង, ប្រទេសកម្ពុជា</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+      <p>© 2026 EducationAcademy. រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+
+    </div>
+  </div>
+</footer>

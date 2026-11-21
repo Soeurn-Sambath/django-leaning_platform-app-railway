@@ -1,0 +1,87 @@
+{% extends 'homepage.html' %}
+{% block title %} 
+About Page 
+{% endblock title %} 
+{% load static %}
+
+{% block content %}
+    <div class="max-w-7xl mx-auto py-10 px-6 mt-16">
+        <!-- 1. Header & About Section -->
+        <div class="p-8 md:p-14 mb-12 text-center">
+             <h1
+            class="text-xs font-bold uppercase tracking-wider text-blue-600 px-3 py-1 mb-3"
+          >
+            About education academy
+          </h1>
+            <h1 class="font-black text-4xl md:text-5xl text-gray-900 mb-6">អំពី Education Academy</h1>
+            <p class="text-lg md:text-xl text-gray-700 leading-relaxed font-medium max-w-4xl mx-auto">
+                Education Academy ត្រូវបានបង្កើតឡើងក្នុងគោលបំណងលើកកម្ពស់ចំណេះដឹង​ និងបណ្ដុះបណ្ដាលជំនាញបច្ចេកវិទ្យា ព័ត៌មានវិទ្យា និងការសរសេរកូដសម្រាប់យុវជន សិក្សានុសិស្ស និងអ្នកដែលចង់ផ្លាស់ប្ដូរអាជីបក្នុងតម្លៃសមរម្យ និងគុណភាពខ្ពស់បំផុត។
+            </p>
+        </div>
+
+        <!-- 2. Mission & Vision Section (New) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div class="bg-white p-8 rounded-2xl shadow border border-gray-100 hover:border-blue-300 transition-colors">
+                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6 text-2xl">
+                    <i class="fa-solid fa-bullseye"></i> <!-- Use FontAwesome icon here -->
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-3">បេសកកម្មរបស់យើង</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    ផ្តល់នូវមេរៀនដែលមានគុណភាពខ្ពស់ ងាយយល់ និងអនុវត្តបានពិតប្រាកដ ដោយផ្តោតសំខាន់លើការកសាងមូលដ្ឋានគ្រឹះសរសេរកូដសម្រាប់សិស្សានុសិស្សកម្ពុជា។
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow border border-gray-100 hover:border-blue-300 transition-colors">
+                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6 text-2xl">
+                    <i class="fa-solid fa-eye"></i> <!-- Use FontAwesome icon here -->
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-3">ចក្ខុវិស័យ</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    ក្លាយជាថ្នាលបណ្តុះបណ្តាលបច្ចេកវិទ្យាអនឡាញឈានមុខគេ ដែលជួយសិស្សរាប់ពាន់នាក់ឱ្យសម្រេចក្តីស្រមៃក្នុងការក្លាយជាអ្នកអភិវឌ្ឍកម្មវិធីដ៏ឆ្នើម។
+                </p>
+            </div>
+        </div>
+        <!-- 4. Team Section (Improved from your code) -->
+        <div class="mb-16">
+            <h1 class="font-black text-gray-900 text-3xl md:text-4xl text-center mb-10">ក្រុមការងាររបស់យើង</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
+                <!-- Team Member 1 -->
+                <div class="flex flex-col justify-center items-center bg-white border border-gray-100 rounded-2xl shadow hover:shadow-xl transition-shadow duration-300 p-8 w-full max-w-sm group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-blue-100 group-hover:border-blue-400 transition-colors mb-4 text-center">
+                        <img src="{% static 'images/sb.PNG' %}" alt="សឿន សម្បត្តិ" class="w-full h-full object-cover">
+                    </div>
+                    <h2 class="font-bold text-xl text-gray-800">សឿន សម្បត្តិ</h2>
+                    <p class="text-blue-600 font-semibold text-sm mt-1">ស្ថាបនិក និងជានាយកប្រតិបត្តិ</p>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="flex flex-col justify-center items-center bg-white border border-gray-100 rounded-2xl shadow hover:shadow-xl transition-shadow duration-300 p-8 w-full max-w-sm group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-blue-100 group-hover:border-blue-400 transition-colors mb-4">
+                        <img src="{% static 'images/bp.jpg' %}" alt="សឿន សម្បត្តិ" class="w-full h-full object-cover">
+                    </div>
+                    <h2 class="font-bold text-xl text-gray-800">បឿន ពន្លឺ</h2>
+                    <p class="text-blue-600 font-semibold text-sm mt-1">គ្រូបណ្ដុះបណ្ដាលផ្នែក Back-End</p>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="flex flex-col justify-center items-center bg-white border border-gray-100 rounded-2xl shadow hover:shadow-xl transition-shadow duration-300 p-8 w-full max-w-sm group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-blue-100 group-hover:border-blue-400 transition-colors mb-4">
+                        <img src="{% static 'images/sal.PNG' %}" alt="សឿន សម្បត្តិ" class="w-full h-full object-cover">
+                    </div>
+                    <h2 class="font-bold text-xl text-gray-800">រិន​ វិសាល</h2>
+                    <p class="text-blue-600 font-semibold text-sm mt-1">គ្រូបណ្ដុះបណ្ដាលផ្នែក Cyber Security</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Call To Action (New) -->
+        <div class="bg-gray-50 border border-gray-200 rounded-3xl p-10 text-center flex flex-col items-center justify-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">ត្រៀមខ្លួនចាប់ផ្តើមសរសេរកូដហើយឬនៅ?</h2>
+            <p class="text-gray-600 mb-8 max-w-2xl text-lg">
+                ចូលរួមជាមួយសិស្សជាច្រើនទៀត ហើយចាប់ផ្តើមអភិវឌ្ឍជំនាញបច្ចេកវិទ្យារបស់អ្នកនៅថ្ងៃនេះ។
+            </p>
+            <a href="{% url 'courses_list' %}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:-translate-y-1">
+                មើលវគ្គសិក្សាទាំងអស់
+            </a>
+        </div>
+    </div>
+{% endblock content %}

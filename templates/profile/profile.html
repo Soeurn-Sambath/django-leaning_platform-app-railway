@@ -1,0 +1,163 @@
+{% extends 'homepage.html' %}
+{% block title %} 
+User Profile 
+{% endblock title %} 
+{% block content %}
+<style>
+    .profile-form input[type="text"],
+    .profile-form input[type="email"],
+    .profile-form input[type="tel"],
+    .profile-form input[type="url"],
+    .profile-form input[type="number"],
+    .profile-form select,
+    .profile-form textarea {
+        width: 100%;
+        padding: 0.625rem 0.875rem;
+        background-color: #f9fafb;
+        border: 1px solid #d1d5db;
+        border-radius: 0.75rem;
+        color: #111827;
+        font-size: 0.875rem;
+        outline: none;
+        transition: all 0.2s ease-in-out;
+    }
+    .profile-form input:focus,
+    .profile-form select:focus,
+    .profile-form textarea:focus {
+        background-color: #ffffff;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    }
+    .profile-form textarea {
+        min-height: 110px;
+        resize: vertical;
+    }
+    .profile-form input[type="file"] {
+        width: 100%;
+        font-size: 0.875rem;
+        color: #4b5563;
+    }
+
+    .profile-form input[type="file"]::file-selector-button {
+        margin-right: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        border: none;
+        font-size: 0.875rem;
+        font-weight: 600;
+        background-color: #eff6ff;
+        color: #2563eb;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .profile-form input[type="file"]::file-selector-button:hover {
+        background-color: #dbeafe;
+    }
+</style>
+
+<div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+        <!-- Main Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            
+            <!-- Header Banner -->
+            <div class="h-35 bg-gradient-to-r from-blue-600 to-indigo-600 overflow-hidden">
+                <img src="https://www.khmertimeskh.com/wp-content/uploads/2026/04/Angkor-Equinox-4.jpg" class="w-full">
+            </div>
+
+            <div class="px-8 pb-8">
+                <!-- Profile Avatar & Info -->
+                <div class="relative flex flex-col sm:flex-row items-center sm:items-end -mt-12 mb-8 sm:space-x-5">
+                    {% if profile.avatar %}
+                        <img src="{{ profile.avatar.url }}" alt="{{ user.username }}" 
+                             class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md bg-white">
+                    {% else %}
+                        <div class="w-24 h-24 rounded-full bg-blue-100 border-4 border-white shadow-md flex items-center justify-center text-blue-600 text-3xl font-bold">
+                            <i class="fa-solid fa-user text-gray-700"></i>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="mt-4 sm:mt-0 text-center sm:text-left flex-1">
+                        <h1 class="text-2xl font-bold text-gray-900">{{ user.username }}</h1>
+                        <p class="text-sm text-gray-500">{{ user.email }}</p>
+                    </div>
+                </div>
+
+
+                <form method="POST" enctype="multipart/form-data" class="profile-form space-y-6">
+                    {% csrf_token %}
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">
+                                Full Name
+                            </label>
+                            {{ form.full_name }}
+                            {% if form.full_name.errors %}
+                                <div class="text-red-500 text-xs mt-1">{{ form.full_name.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">
+                                Phone Number
+                            </label>
+                            {{ form.phone }}
+                            {% if form.phone.errors %}
+                                <div class="text-red-500 text-xs mt-1">{{ form.phone.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1.5">
+                            Location
+                        </label>
+                        {{ form.location }}
+                        {% if form.location.errors %}
+                            <div class="text-red-500 text-xs mt-1">{{ form.location.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Bio -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1.5">
+                            Bio
+                        </label>
+                        {{ form.bio }}
+                        {% if form.bio.errors %}
+                            <div class="text-red-500 text-xs mt-1">{{ form.bio.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Profile Image Upload -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1.5">
+                            Profile Image
+                        </label>
+                        <div class="p-4 bg-gray-50 border border-gray-200 border-dashed rounded-xl">
+                            {{ form.avatar }}
+                        </div>
+                        {% if form.avatar.errors %}
+                            <div class="text-red-500 text-xs mt-1">{{ form.avatar.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-4 border-t border-gray-100 flex justify-end">
+                        <button type="submit" 
+                                class="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 focus:ring-4 focus:ring-blue-100 transition duration-200 shadow-sm">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
