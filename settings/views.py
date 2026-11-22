@@ -21,12 +21,6 @@ def register_view(request):
     }
     return render(request, 'auth/register.html', context)
 
-
-def category_page(request):
-    category = Course.objects.all()
-    context = {'category': category}
-    return render(request,'category.html', context)
-
 @login_required
 def profile_view(request):
     profile, created = Profile.objects.get_or_create(

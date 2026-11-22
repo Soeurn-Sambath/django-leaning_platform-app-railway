@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from settings.models import Course, Profile
-from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
-@login_required
 def home(request):
-    profile, created = Profile.objects.get_or_create(user=request.user)
+    profile = None
+    if request.user.is_authenticated:
+        profile = Profile.objects.filter(user=request.user).first()
     category = request.GET.get('category')
     search_query = request.GET.get('q')
     courses = Course.objects.all()
@@ -48,9 +48,10 @@ def home(request):
     }
     return render(request, 'homepage.html', context)
 
-@login_required
 def course_list(request):
-    profile, created = Profile.objects.get_or_create(user=request.user)
+    profile = None
+    if request.user.is_authenticated:
+        profile = Profile.objects.filter(user=request.user).first()
     category = request.GET.get('category')
     search_query = request.GET.get('q')
 
@@ -88,11 +89,10 @@ def course_list(request):
     
     return render(request, 'courses.html', context)
 
-@login_required
 def course_detail(request, course_id):
-    profile, created = Profile.objects.get_or_create(
-        user = request.user
-    )
+    profile = None
+    if request.user.is_authenticated:
+        profile = Profile.objects.filter(user=request.user).first()
     course = get_object_or_404(Course, pk=course_id)
     sections = course.sections.prefetch_related('lessons').all()
 
@@ -118,21 +118,19 @@ def course_detail(request, course_id):
     }
     return render(request, 'course_details.html', context)
 
-@login_required
 def about_page(request):
-    profile, created = Profile.objects.get_or_create(
-        user = request.user
-    )
+    profile = None
+    if request.user.is_authenticated:
+        profile = Profile.objects.filter(user=request.user).first()
     context = {
         'profile': profile
     }
     return render(request, 'about.html', context)
 
-@login_required
 def contact_page(request):
-    profile, created = Profile.objects.get_or_create(
-        user = request.user
-    )
+    profile = None
+    if request.user.is_authenticated:
+        profile = Profile.objects.filter(user=request.user).first()
     context = {
         'profile': profile
     }

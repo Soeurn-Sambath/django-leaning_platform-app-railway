@@ -4,12 +4,24 @@ from django.contrib.auth.models import User
 from . models import Profile
 
 class RegisterForm(UserCreationForm):
+    username = forms.CharField(
+        widget = forms.TextInput(attrs={
+                'class': 'w-full border rounded p-3',
+                'placeholder': 'Enter your username'
+        }),
+    )
     email = forms.EmailField(
         required=True,
         widget=forms.EmailInput(attrs={
             'placeholder': 'Enter your email',
             'class': 'w-full border rounded-lg p-3'
         })
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'Enter your password'})
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'Enter your confirm password'})
     )
     class Meta():
         model = User

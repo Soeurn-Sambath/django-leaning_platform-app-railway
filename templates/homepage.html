@@ -43,7 +43,7 @@
     {% include 'components/nav.html' %} {% block content %}
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <!-- 1. Hero Section -->
-      <section class="py-12 md:py-16 flex flex-col items-center text-center">
+      <section class="py-15 md:py-16 flex flex-col items-center text-center">
         <div
           class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 py-1.5 px-4 rounded-full text-blue-600 font-bold text-xs shadow-sm mb-6"
         >
@@ -86,36 +86,6 @@
             <i class="fa-solid fa-circle-play text-blue-600"></i>
             <span>អំពីពួកយើង</span>
           </a>
-        </div>
-
-        <!-- Stats Badges -->
-        <div
-          class="flex flex-wrap justify-center items-center gap-6 sm:gap-10 mt-10 pt-8 border-t border-gray-200/80 w-full max-w-3xl text-sm font-semibold text-gray-600"
-        >
-          <div class="flex items-center gap-2">
-            <div
-              class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs"
-            >
-              <i class="fa-solid fa-graduation-cap"></i>
-            </div>
-            <span>សិស្សជាង 3,000+ នាក់</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div
-              class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs"
-            >
-              <i class="fa-solid fa-book"></i>
-            </div>
-            <span>៥០+ វគ្គសិក្សាជាក់ស្តែង</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div
-              class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs"
-            >
-              <i class="fa-solid fa-certificate"></i>
-            </div>
-            <span>ទទួលបានវិញ្ញាបនបត្រ</span>
-          </div>
         </div>
       </section>
 
@@ -193,7 +163,7 @@
           </a>
         </div>
 
-      {% include 'components/carousel.html' %}
+        {% include 'components/carousel.html' %}
       </section>
 
       <!-- 4. Course Catalog Section with Category Filter Tabs -->
@@ -255,117 +225,119 @@
         </div>
 
         <!-- Courses Grid -->
-         <div class="max-w-7xl m-auto">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {% for course in courses %}
-          <div
-            class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group"
-          >
-            <!-- Image Header -->
-            <a
-              href="{% url 'course_detail' course.id %}"
-              class="block relative h-48 bg-gradient-to-br from-blue-900 to-indigo-800 overflow-hidden"
+        <div class="max-w-7xl m-auto">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for course in courses %}
+            <div
+              class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group"
             >
-              {% if course.image %}
-              <img
-                src="{{ course.image.url }}"
-                alt="{{ course.title }}"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              {% else %}
-              <div
-                class="w-full h-full flex flex-col items-center justify-center text-white p-4"
+              <!-- Image Header -->
+              <a
+                href="{% url 'course_detail' course.id %}"
+                class="block relative h-48 bg-gradient-to-br from-blue-900 to-indigo-800 overflow-hidden"
               >
-                <i class="fa-solid fa-code text-4xl mb-2 text-blue-200"></i>
-                <span class="text-xs font-bold"
-                  >{{ course.get_category_display}}</span
+                {% if course.image %}
+                <img
+                  src="{{ course.image.url }}"
+                  alt="{{ course.title }}"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {% else %}
+                <div
+                  class="w-full h-full flex flex-col items-center justify-center text-white p-4"
                 >
-              </div>
-              {% endif %}
-
-              <span
-                class="absolute top-3 right-3 bg-green-500 text-white text-xs font-black px-3 py-1 rounded-full shadow"
-              >
-                ${{ course.price }}
-              </span>
-            </a>
-
-            <!-- Content -->
-            <div class="p-6 flex-1 flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between gap-2 mb-2.5">
-                  <span
-                    class="bg-blue-50 text-blue-600 text-xs font-bold px-2.5 py-0.5 rounded-full"
+                  <i class="fa-solid fa-code text-4xl mb-2 text-blue-200"></i>
+                  <span class="text-xs font-bold"
+                    >{{ course.get_category_display}}</span
                   >
-                    {{ course.get_category_display}}
-                  </span>
-                  <div
-                    class="flex items-center gap-1 text-amber-500 text-xs font-bold"
-                  >
-                    <i class="fa-solid fa-star"></i>
-                    <span>{{ course.rating }}</span>
+                </div>
+                {% endif %}
+
+                <span
+                  class="absolute top-3 right-3 bg-green-500 text-white text-xs font-black px-3 py-1 rounded-full shadow"
+                >
+                  ${{ course.price }}
+                </span>
+              </a>
+
+              <!-- Content -->
+              <div class="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between gap-2 mb-2.5">
+                    <span
+                      class="bg-blue-50 text-blue-600 text-xs font-bold px-2.5 py-0.5 rounded-full"
+                    >
+                      {{ course.get_category_display}}
+                    </span>
+                    <div
+                      class="flex items-center gap-1 text-amber-500 text-xs font-bold"
+                    >
+                      <i class="fa-solid fa-star"></i>
+                      <span>{{ course.rating }}</span>
+                    </div>
                   </div>
-                </div>
 
-                <a href="{% url 'course_detail' course.id %}">
-                  <h3
-                    class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-1"
+                  <a href="{% url 'course_detail' course.id %}">
+                    <h3
+                      class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-1"
+                    >
+                      {{ course.title }}
+                    </h3>
+                  </a>
+
+                  <p
+                    class="text-sm text-gray-600 mt-2.5 line-clamp-2 leading-relaxed"
                   >
-                    {{ course.title }}
-                  </h3>
-                </a>
-
-                <p
-                  class="text-sm text-gray-600 mt-2.5 line-clamp-2 leading-relaxed"
-                >
-                  {{ course.description }}
-                </p>
-              </div>
-
-              <div
-                class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between gap-4"
-              >
-                <div class="flex items-center gap-3 text-xs text-gray-500">
-                  <span class="flex items-center gap-1">
-                    <i class="fa-regular fa-clock text-blue-500"></i>
-                    {{ course.total_duration }} h
-                  </span>
-                  <span class="flex items-center gap-1">
-                    <i class="fa-solid fa-book text-blue-500"></i>
-                    {{ course.total_lessons }} មេរៀន
-                  </span>
+                    {{ course.description }}
+                  </p>
                 </div>
 
-                <a
-                  href="{% url 'course_detail' course.id %}"
-                  class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2.5 px-4 rounded-lg transition-colors shadow-sm"
+                <div
+                  class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between gap-4"
                 >
-                  <span>ចូលរៀន</span>
-                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                </a>
+                  <div class="flex items-center gap-3 text-xs text-gray-500">
+                    <span class="flex items-center gap-1">
+                      <i class="fa-regular fa-clock text-blue-500"></i>
+                      {{ course.total_duration }} h
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <i class="fa-solid fa-book text-blue-500"></i>
+                      {{ course.total_lessons }} មេរៀន
+                    </span>
+                  </div>
+
+                  <a
+                    href="{% url 'course_detail' course.id %}"
+                    class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2.5 px-4 rounded-lg transition-colors shadow-sm"
+                  >
+                    <span>ចូលរៀន</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          {% empty %}
-          <div
-            class="col-span-full bg-white rounded-2xl border border-gray-200 p-12 text-center"
-          >
-            <i class="fa-solid fa-folder-open text-4xl text-gray-300 mb-3"></i>
-            <h3 class="text-lg font-bold text-gray-700">
-              មិនមានវគ្គសិក្សាក្នុងប្រភេទនេះនៅឡើយទេ
-            </h3>
-            <p class="text-sm text-gray-500 mt-1">
-              សូមសាកល្បងជ្រើសរើសប្រភេទផ្សេង ឬស្វែងរកពាក្យគន្លឹះផ្សេង។
-            </p>
-            <a
-              href="{% url 'home' %}#courses-section"
-              class="mt-4 inline-block text-sm font-bold text-blue-600 hover:underline"
+            {% empty %}
+            <div
+              class="col-span-full bg-white rounded-2xl border border-gray-200 p-12 text-center"
             >
-              បង្ហាញវគ្គសិក្សាទាំងអស់
-            </a>
+              <i
+                class="fa-solid fa-folder-open text-4xl text-gray-300 mb-3"
+              ></i>
+              <h3 class="text-lg font-bold text-gray-700">
+                មិនមានវគ្គសិក្សាក្នុងប្រភេទនេះនៅឡើយទេ
+              </h3>
+              <p class="text-sm text-gray-500 mt-1">
+                សូមសាកល្បងជ្រើសរើសប្រភេទផ្សេង ឬស្វែងរកពាក្យគន្លឹះផ្សេង។
+              </p>
+              <a
+                href="{% url 'home' %}#courses-section"
+                class="mt-4 inline-block text-sm font-bold text-blue-600 hover:underline"
+              >
+                បង្ហាញវគ្គសិក្សាទាំងអស់
+              </a>
+            </div>
+            {% endfor %}
           </div>
-          {% endfor %}
-        </div>
         </div>
       </section>
 

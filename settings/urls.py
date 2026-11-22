@@ -26,6 +26,5 @@ urlpatterns = [
         'profile/',
         views.profile_view,
         name='profile'
-    ),
-    path('category/', views.category_page)
+    )
 ]
